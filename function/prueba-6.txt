@@ -1,0 +1,1 @@
+﻿Prueba final del flujo Cloud Storage -> Eventarc -> Cloud Function -> Cloud Logging
