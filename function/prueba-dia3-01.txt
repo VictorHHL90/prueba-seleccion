@@ -1,0 +1,3 @@
+Prueba de integración completa del Día 3.
+
+Este archivo fue cargado en Google Cloud Storage para validar la comunicación entre Cloud Storage, Cloud Function, Google Apps Script y Google Sheets.
