@@ -444,3 +444,41 @@ Las capturas de pantalla del proyecto se almacenarán en:
 
 docs/screenshots/
 
+Día 3 — Integración GCP + Google Workspace
+
+Se implementó una integración entre Google Cloud Platform y Google Workspace para automatizar el procesamiento de archivos cargados en Cloud Storage.
+
+Arquitectura
+Cloud Storage -> Cloud Function (Python 3.13) -> Validación de metadatos -> HMAC-SHA256 + Secret Manager -> Apps Script Web App -> Google Sheets + Gmail
+
+Componentes implementados
+Cloud Storage: almacenamiento de archivos y disparador del flujo.
+Cloud Function: procesa eventos de archivos y extrae sus metadatos.
+Secret Manager: almacenamiento seguro del secreto utilizado para la autenticación.
+HMAC-SHA256: validación de autenticidad e integridad de la información.
+Google Apps Script: recibe y valida los metadatos mediante HTTPS.
+Google Sheets: registra automáticamente los archivos recibidos.
+Gmail/Google Groups: envía una notificación cuando se recibe un archivo.
+Cloud Logging: permite consultar la ejecución y errores del proceso.
+Seguridad
+
+Se implementaron validaciones de los metadatos recibidos, cuentas de servicio con permisos específicos y almacenamiento del secreto en Secret Manager. La comunicación entre Cloud Function y Apps Script utiliza HTTPS y una firma HMAC-SHA256.
+
+Pruebas
+
+Se realizaron pruebas unitarias y de integración.
+
+5 pruebas unitarias aprobadas.
+Prueba de carga de archivos en Cloud Storage.
+Prueba de comunicación con Apps Script.
+Prueba de registro automático en Google Sheets.
+Prueba de envío de notificación por correo.
+Prueba de firma HMAC inválida.
+Verificación de logs en Cloud Logging.
+Resultado
+
+El flujo completo quedó funcionando de extremo a extremo:
+
+Cloud Storage → Cloud Function → Apps Script → Google Sheets + Gmail
+
+La integración fue validada mediante pruebas reales y evidencias de ejecución.
